@@ -4,6 +4,8 @@
   "description": "Clonando a plataforma tabnews",
   "main": "index.js",
   "scripts": {
+    "migration:create": "node-pg-migrate -m infra/migrations create",
+    "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up",
     "dev": "npm run services:up && next dev",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
@@ -16,7 +18,9 @@
   "author": "Matheus Guimaraes",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.4",
     "next": "^13.1.6",
+    "node-pg-migrate": "^6.2.2",
     "pg": "^8.11.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
