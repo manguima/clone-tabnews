@@ -8,7 +8,7 @@ async function query(queryObject) {
     const result = await client.query(queryObject);
     return result;
   } catch (error) {
-    throw error;
+    throw Error();
   } finally {
     await client.end();
   }
@@ -33,7 +33,9 @@ function getSSLValues() {
   return process.env.NODE_ENV === "production" ? true : false;
 }
 
-export default {
+const database = {
   query,
   getNewClient,
 };
+
+export default database;
